@@ -1,9 +1,13 @@
 <script>
+
+export default {
+
+}
 </script>
 
 <template>
 </template>
 
-<style scoped>
-
+<style lang="scss" >
+@use './assets/scss/style.scss' as *;
 </style>
