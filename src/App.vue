@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { store } from './assets/data/store';
 import appheader from './components/Appheader.vue';
+import Appmain from './components/Appmain.vue'
 export default {
     data() {
         return {
@@ -12,9 +13,6 @@ export default {
         }
     },
     methods: {
-        mountValue(value) {
-            this.movieTxtValue = value
-        },
         callApi(txtValue) {
             store.movieTxtValue = txtValue
             axios.get(this.movieApi + `${store.movieTxtValue}`).then(res => {
@@ -23,13 +21,14 @@ export default {
         }
     },
     components: {
-        appheader
+        appheader, Appmain
     }
 }
 </script>
 
 <template>
     <appheader @new-search="callApi" />
+    <Appmain />
 </template>
 
 <style lang="scss" >
