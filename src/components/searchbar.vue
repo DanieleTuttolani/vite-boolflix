@@ -14,7 +14,7 @@ export default {
 <template>
     <div class="container">
         <form @submit.prevent="$emit('txt-value-change', txtValue)">
-            <input v-model='txtValue' type="text">
+            <input v-model.trim='txtValue' type="text" placeholder="cerca">
             <button :class="{ ' disabled': !txtValue.length }" class="btn btn-primary">cerca</button>
         </form>
     </div>

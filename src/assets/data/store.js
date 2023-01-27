@@ -2,5 +2,7 @@ import { reactive } from "vue";
 
 export const store = reactive({
   movieList: [],
-  movieTxtValue: "",
+  seriesList: [],
+  resultTxtValue: "",
+  ImgBaseLink: "https://image.tmdb.org/t/p/w500",
 });

@@ -9,14 +9,18 @@ export default {
             store,
             apiKey: "api_key=2c4e7669f9c4ac5e5a6abdb4ee0e6575",
             movieApi: `https://api.themoviedb.org/3/search/movie?api_key=2c4e7669f9c4ac5e5a6abdb4ee0e6575&page=1&query=`,
+            seriesApi: 'https://api.themoviedb.org/3/search/tv?api_key=2c4e7669f9c4ac5e5a6abdb4ee0e6575&page=1&query='
 
         }
     },
     methods: {
         callApi(txtValue) {
-            store.movieTxtValue = txtValue
-            axios.get(this.movieApi + `${store.movieTxtValue}`).then(res => {
+            store.resultTxtValue = txtValue
+            axios.get(this.movieApi + `${store.resultTxtValue}`).then(res => {
                 store.movieList = res.data.results
+            })
+            axios.get(this.seriesApi + `${store.resultTxtValue}`).then(res => {
+                store.seriesList = res.data.results
             })
         }
     },

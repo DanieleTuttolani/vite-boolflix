@@ -1,30 +1,25 @@
 <script>
 import { store } from '../assets/data/store';
+import movieSection from './movieSection.vue';
+import seriesSection from './seriesSection.vue'
 export default {
     data() {
         return {
             store
         }
+    },
+    components: {
+        movieSection, seriesSection
     }
 }
 </script>
 
 <template>
-
     <p v-if="!store.movieList.length">cerca un titolo</p>
-
-    <ul v-else>
-        <li v-for="movie in store.movieList" :key="movie.title">
-            <p>{{ movie.title }}</p>
-            <p>{{ movie.original_title }}</p>
-            <img v-if="movie.original_language === 'en'" src="../assets/img/en.png" alt="ENG flag">
-            <img v-else-if="movie.original_language === 'it'" src="../assets/img/it.png" alt="ITA flag">
-            <i v-else="movie.original_language != 'it' && 'en'" class="bi bi-flag-fill"></i>
-            <p>{{ movie.original_language }}</p>
-            <p>{{ movie.vote_average }}</p>
-
-        </li>
-    </ul>
+    <div v-else>
+        <movieSection />
+        <seriesSection />
+    </div>
 </template>
 
 <style>
