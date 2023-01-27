@@ -14,7 +14,7 @@ export default {
     <p v-if="!store.movieList.length">cerca un titolo</p>
 
     <ul v-else>
-        <li v-for="movie in store.movieList">
+        <li v-for="movie in store.movieList" :key="movie.title">
             <p>{{ movie.title }}</p>
             <p>{{ movie.original_title }}</p>
             <img v-if="movie.original_language === 'en'" src="../assets/img/en.png" alt="ENG flag">
