@@ -13,7 +13,7 @@ export default {
 }
 </script>
 <template>
-    <h1>Serie tv</h1>
+    <h1 class="text-light">Serie tv</h1>
     <productionCard :List="store.seriesList" />
 </template>
 <style>

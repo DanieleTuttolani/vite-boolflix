@@ -14,18 +14,22 @@ export default {
 <template>
     <div class="container-fluid">
         <div class="row row-cols-6 gy-3">
-            <div v-for="production in List" class="col p-0">
+            <div v-for="production in List" class="col p-0 text-light">
                 <div class="overlay h-100">
-                    <p>Titolo :{{ production.title || production.name }}</p>
-                    <p>Titolo :{{ production.original_title || production.original_name }}</p>
-                    <div class="info-wrapper text-center ">
+                    <div class="titles text-center ">
+                        <p>Titolo :</p>
+                        <p class="fs-3">{{ production.title || production.name }}</p>
+                        <p>Titolo originale:</p>
+                        <p class="fs-3"> {{ production.original_title || production.original_name }}</p>
+                    </div>
+                    <div class="lang-info-wrapper text-center mb-4">
                         <img v-if="production.original_language === 'en'" src="../assets/img/en.png" alt="ENG flag">
                         <img v-else-if="production.original_language === 'it'" src="../assets/img/it.png"
                             alt="ITA flag">
                         <i v-else="production.original_language != 'it' && 'en'" class="bi bi-flag-fill"></i>
                         <p>{{ production.original_language }}</p>
                     </div>
-
+                    <p>Voto medio utenza : {{ production.vote_average }}</p>
 
                 </div>
                 <img :src='store.ImgBaseLink + `${production.poster_path}`' alt="poster">
@@ -36,7 +40,6 @@ export default {
 <style lang="scss" scoped>
 .col {
     height: 400px;
-    border: 2px solid gray;
     position: relative;
 
     img {
@@ -48,10 +51,11 @@ export default {
 
     &:hover .overlay {
         display: block;
+        box-shadow: inset 0 23px 40px rgb(65, 0, 0);
     }
 
     .overlay {
-        background-color: red;
+        background-color: rgba(48, 48, 48, 0.952);
         position: absolute;
         top: 0;
         bottom: 0;
@@ -62,7 +66,7 @@ export default {
         display: none;
         cursor: pointer;
 
-        .info-wrapper {
+        .lang-info-wrapper {
             margin: 0 auto;
             height: 50px;
             width: 100px;
