@@ -10,12 +10,15 @@ export default {
     },
     components: {
         movieSection, seriesSection
-    }
+    },
+
 }
 </script>
 
 <template>
-    <p v-if="!store.movieList.length">cerca un titolo</p>
+    <div class="text-center" v-if="!store.movieList.length">
+        <h1 class="text-light"> Cerca un titolo!</h1>
+    </div>
     <div v-else>
         <movieSection />
         <seriesSection />

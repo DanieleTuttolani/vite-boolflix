@@ -8,19 +8,27 @@ export default {
     },
     props: {
         List: Array,
+    },
+    methods: {
+        translateRatings() {
+            Math.floor((store.vote_average) / 2);
+        }
+    },
+    computed: {
+
     }
 }
 </script>
 <template>
     <div class="container-fluid">
         <div class="row row-cols-6 gy-3">
-            <div v-for="production in List" class="col p-0 text-light">
+            <div v-for="production in List" class="col p-0 text-light" :key="production.id">
                 <div class="overlay h-100">
                     <div class="titles text-center ">
                         <p>Titolo :</p>
-                        <p class="fs-3">{{ production.title || production.name }}</p>
+                        <p class="fs-4">{{ production.title || production.name }}</p>
                         <p>Titolo originale:</p>
-                        <p class="fs-3"> {{ production.original_title || production.original_name }}</p>
+                        <p class="fs-4"> {{ production.original_title || production.original_name }}</p>
                     </div>
                     <div class="lang-info-wrapper text-center mb-4">
                         <img v-if="production.original_language === 'en'" src="../assets/img/en.png" alt="ENG flag">
@@ -32,7 +40,7 @@ export default {
                     <p>Voto medio utenza : {{ production.vote_average }}</p>
 
                 </div>
-                <img :src='store.ImgBaseLink + `${production.poster_path}`' alt="poster">
+                <img :src='store.ImgBaseLink + `${production.poster_path}`' :alt="production.title || production.name">
             </div>
         </div>
     </div>
@@ -51,7 +59,6 @@ export default {
 
     &:hover .overlay {
         display: block;
-        box-shadow: inset 0 23px 40px rgb(65, 0, 0);
     }
 
     .overlay {
